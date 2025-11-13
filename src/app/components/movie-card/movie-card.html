@@ -1,0 +1,18 @@
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{movie.title | transformLenght}}</mat-card-title>
+    <button matButton [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="addToFavorite()">add to favorite</button>
+      <button mat-menu-item (click)="addToWatchList()">add to watchList</button>
+    </mat-menu>
+  </mat-card-header>
+  <img mat-card-image [src]="movie.poster" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <div class="date">{{movie.year}}</div>
+    <p>
+      {{movie.description}}
+    </p>
+  </mat-card-content>
+
+</mat-card>

@@ -1,0 +1,16 @@
+.header__wrapper {
+  padding: 10px 20px;
+}
+.nav-header__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+}
+.nav-header__item {
+  font-size: 20px;
+  cursor: pointer;
+}

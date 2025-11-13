@@ -1,0 +1,40 @@
+.example-card {
+  max-width: 200px;
+  background-color: rgb(224, 224, 224);
+}
+mat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  height: 70px;
+  overflow: hidden;
+}
+mat-card-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+img {
+  height: 250px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+.date {
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+mat-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* щоб всі зайняли максимальну висоту в рядку */
+}
+mat-card-content {
+  font-size: 12px;
+}
+.mdc-button {
+  min-width: auto;
+  margin-right: -15px;
+}
+.mat-mdc-button > .mat-icon {
+  margin: 0;
+}

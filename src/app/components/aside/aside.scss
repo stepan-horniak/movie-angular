@@ -1,0 +1,55 @@
+:host {
+}
+.aside {
+  // .aside__wrapper
+
+  &__wrapper {
+    height: 100svh;
+    padding: 30px 15px;
+  }
+
+  // .aside__logo
+
+  &__logo {
+    margin-bottom: 50px;
+  }
+
+  // .aside__list
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  // .aside__item
+
+  &__item {
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: silver;
+    cursor: pointer;
+  }
+}
+.logo-aside {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  // .logo-aside__image
+
+  &__image {
+    width: 80px;
+    aspect-ratio: 1/1;
+    & > img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // .logo-aside__text
+
+  &__text {
+    font-size: 25px;
+  }
+}

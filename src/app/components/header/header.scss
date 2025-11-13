@@ -1,0 +1,33 @@
+.header {
+  // .header__wrapper
+
+  &__wrapper {
+    padding: 10px 20px;
+  }
+
+  // .header__row
+
+  &__row {
+  }
+
+  // .header__nav
+
+  &__nav {
+  }
+}
+.nav-header {
+  // .nav-header__list
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  // .nav-header__item
+
+  &__item {
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
