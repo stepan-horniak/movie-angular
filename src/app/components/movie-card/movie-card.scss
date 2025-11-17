@@ -1,40 +1,93 @@
-.example-card {
-  max-width: 200px;
-  background-color: rgb(224, 224, 224);
-}
-mat-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  height: 70px;
-  overflow: hidden;
-}
-mat-card-title {
-  font-size: 14px;
-  font-weight: 700;
-}
-img {
-  height: 250px;
-  object-fit: cover;
-  margin-bottom: 15px;
-}
-.date {
-  margin-bottom: 15px;
-  font-size: 15px;
-}
-mat-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* щоб всі зайняли максимальну висоту в рядку */
-}
-mat-card-content {
-  font-size: 12px;
-}
-.mdc-button {
-  min-width: auto;
-  margin-right: -15px;
-}
-.mat-mdc-button > .mat-icon {
-  margin: 0;
+:host {
+  .block {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    width: 200px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 15px;
+
+    // .block__top
+
+    &__top {
+    }
+
+    // .block__image
+
+    &__image {
+      margin-left: -15px;
+      margin-right: -15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform ease 0.3s;
+      & > img {
+        aspect-ratio: 200/270;
+        width: 100%;
+        height: 100%;
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          transition: transform ease 0.3s;
+
+          transform: scale(1.01);
+        }
+      }
+    }
+
+    // .block__info
+
+    &__info {
+    }
+  }
+  .top-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    mat-icon {
+      margin: 0;
+    }
+    // .top-block__title
+
+    &__title {
+    }
+    //.top-block__menu
+    &__menu {
+      padding: 5px !important;
+      margin: 0 !important;
+      min-width: 0 !important;
+      height: auto !important;
+    }
+  }
+  .info-block {
+    align-self: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    // .info-block__button-see-info
+
+    &__button-see-info {
+      align-self: center;
+      padding: 10px 15px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    // .info-block__date
+
+    &__date {
+      text-align: center;
+    }
+
+    // .info-block__info-text
+
+    &__info-text {
+      text-align: center;
+      font-size: 12px;
+    }
+  }
 }

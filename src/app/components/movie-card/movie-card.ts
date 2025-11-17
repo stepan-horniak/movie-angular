@@ -5,6 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { TransformLenghtPipe } from '../../pipes/transform-lenght-pipe';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-movie-card',
   imports: [
@@ -14,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatMenuModule,
     MatIconModule,
     TransformLenghtPipe,
+    RouterLink,
   ],
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.scss',
@@ -26,4 +29,6 @@ export class MovieCard {
   addToWatchList() {
     console.log('addToWatchList');
   }
+
+  isVisibleInfo: boolean = false;
 }

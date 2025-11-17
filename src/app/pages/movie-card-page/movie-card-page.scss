@@ -1,0 +1,46 @@
+:host {
+  .movie-card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(228, 226, 226);
+    border-radius: 25px;
+    // .movie-card__top
+
+    &__top {
+    }
+
+    // .movie-card__image
+
+    &__image {
+      width: 300px;
+      & > img {
+        width: 100%;
+        aspect-ratio: 300/500;
+      }
+    }
+
+    // .movie-card__info
+
+    &__info {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    // .movie-card__info-text
+
+    &__info-text {
+      font-size: 18px;
+    }
+  }
+  .top-movie-card {
+    // .top-movie-card__title
+
+    &__title {
+      font-size: 25px;
+      font-weight: 700;
+    }
+  }
+}

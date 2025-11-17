@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
-import { MovieCard } from '../movie-card/movie-card';
-import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-movie-list',
-  imports: [MovieCard, CommonModule],
-  templateUrl: './movie-list.html',
-  styleUrl: './movie-list.scss',
+  selector: 'app-movie-card-page',
+  imports: [],
+  templateUrl: './movie-card-page.html',
+  styleUrl: './movie-card-page.scss',
 })
-export class MovieList {
+export class MovieCardPage {
   batman = [
     {
-      id: 'tt0096895',
+      id: '96895',
       title: 'Batman',
       year: '1989',
       poster:
@@ -75,4 +74,13 @@ export class MovieList {
         'Бетмен протистоїть Пінгвіну та загадковій Жінці-Кішці, які об’єднуються проти нього.',
     },
   ];
+  movieEl: any[] = [];
+  constructor(private route: ActivatedRoute) {}
+  ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      this.movieEl.push(this.batman.find((el) => el.id === id));
+    });
+  }
 }

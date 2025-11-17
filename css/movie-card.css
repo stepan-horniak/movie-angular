@@ -1,10 +1,44 @@
-@charset "UTF-8";
-.example-card {
-  max-width: 200px;
-  background-color: rgb(224, 224, 224);
+:host .block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 15px;
+  width: 200px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px;
 }
-
-mat-card-header {
+:host .block__image {
+  margin-left: -15px;
+  margin-right: -15px;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform ease 0.3s;
+  transition: -webkit-transform ease 0.3s;
+  transition: transform ease 0.3s;
+  transition: transform ease 0.3s, -webkit-transform ease 0.3s;
+}
+:host .block__image > img {
+  aspect-ratio: 200/270;
+  width: 100%;
+  height: 100%;
+}
+@media (any-hover: hover) {
+  :host .block__image:hover {
+    -webkit-transition: -webkit-transform ease 0.3s;
+    transition: -webkit-transform ease 0.3s;
+    transition: transform ease 0.3s;
+    transition: transform ease 0.3s, -webkit-transform ease 0.3s;
+    -webkit-transform: scale(1.01);
+        -ms-transform: scale(1.01);
+            transform: scale(1.01);
+  }
+}
+:host .top-block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14,29 +48,20 @@ mat-card-header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 15px;
-  height: 70px;
-  overflow: hidden;
+  height: 40px;
 }
-
-mat-card-title {
-  font-size: 14px;
-  font-weight: 700;
+:host .top-block mat-icon {
+  margin: 0;
 }
-
-img {
-  height: 250px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  margin-bottom: 15px;
+:host .top-block__menu {
+  padding: 5px !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  height: auto !important;
 }
-
-.date {
-  margin-bottom: 15px;
-  font-size: 15px;
-}
-
-mat-card {
+:host .info-block {
+  -ms-flex-item-align: center;
+      align-self: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,18 +69,22 @@ mat-card {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100%; /* щоб всі зайняли максимальну висоту в рядку */
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  row-gap: 10px;
 }
-
-mat-card-content {
+:host .info-block__button-see-info {
+  -ms-flex-item-align: center;
+      align-self: center;
+  padding: 10px 15px;
+  border-radius: 20px;
+  text-align: center;
+}
+:host .info-block__date {
+  text-align: center;
+}
+:host .info-block__info-text {
+  text-align: center;
   font-size: 12px;
-}
-
-.mdc-button {
-  min-width: auto;
-  margin-right: -15px;
-}
-
-.mat-mdc-button > .mat-icon {
-  margin: 0;
 }

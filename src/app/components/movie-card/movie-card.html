@@ -1,18 +1,29 @@
-<mat-card class="example-card" appearance="outlined">
-  <mat-card-header>
-    <mat-card-title>{{movie.title | transformLenght}}</mat-card-title>
-    <button matButton [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+<div class="block">
+  <div class="block__top top-block">
+    <h4 class="top-block__title">{{movie.title | transformLenght}}</h4>
+    <button class="top-block__menu" matButton [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="addToFavorite()">add to favorite</button>
       <button mat-menu-item (click)="addToWatchList()">add to watchList</button>
     </mat-menu>
-  </mat-card-header>
-  <img mat-card-image [src]="movie.poster" alt="Photo of a Shiba Inu">
-  <mat-card-content>
-    <div class="date">{{movie.year}}</div>
-    <p>
+  </div>
+
+  <a [routerLink]="['/movieCard', movie.id]">
+    <div class="block__image">
+      <img [src]="movie.poster" [alt]="movie.title">
+    </div>
+  </a>
+  <div class="block__info info-block">
+    <button class="info-block__button-see-info" (click)="isVisibleInfo=!isVisibleInfo"
+      [style.backgroundColor]="isVisibleInfo ? 'rgb(154, 126, 126)' : 'rgb(145, 140, 140)'">
+      {{ isVisibleInfo ? 'скрити опис':'показати опис' }}
+    </button>
+    @if (isVisibleInfo) {
+
+    <div class="info-block__date">дата випуску: {{movie.year}}</div>
+    <p class="info-block__info-text">
       {{movie.description}}
     </p>
-  </mat-card-content>
-
-</mat-card>
+    }
+  </div>
+</div>
