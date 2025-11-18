@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { MovieCard } from '../../components/movie-card/movie-card';
 import { CommonModule } from '@angular/common';
 

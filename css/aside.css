@@ -4,6 +4,7 @@
 }
 .aside__logo {
   margin-bottom: 50px;
+  cursor: pointer;
 }
 .aside__list {
   display: -webkit-box;

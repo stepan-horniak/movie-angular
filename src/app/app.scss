@@ -1,17 +1,17 @@
-:host {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-areas:
-    'aside header'
-    'aside page';
-  grid-template-rows: 40px 1fr;
-}
-.header {
-  grid-area: header;
-}
-.aside {
-  grid-area: aside;
-}
-.page {
-  grid-area: page;
-}
+// :host {
+//   display: grid;
+//   grid-template-columns: 200px 1fr;
+//   grid-template-areas:
+//     'aside header'
+//     'aside page';
+//   grid-template-rows: 40px 1fr;
+// }
+// .header {
+//   grid-area: header;
+// }
+// .aside {
+//   grid-area: aside;
+// }
+// .page {
+//   grid-area: page;
+// }

@@ -15,7 +15,7 @@ import { RouterOutlet } from '@angular/router';
 export class App {
   batman = [
     {
-      id: 'tt0096895',
+      id: '96895',
       title: 'Batman',
       year: '1989',
       poster:
@@ -33,7 +33,7 @@ export class App {
     },
     {
       id: 'tt2975590',
-      title: 'Batman v Superman: Dawn of Justice',
+      title: 'Batman v Superman: Dawn of Justice Batman v Superman: Dawn of Justice',
       year: '2016',
       poster:
         'https://ia.media-imdb.com/images/M/MV5BYThjYzcyYzItNTVjNy00NDk0LTgwMWQtYjMwNmNlNWJhMzMyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg',
@@ -49,14 +49,7 @@ export class App {
       description:
         'Через вісім років після падіння Джокера Бетмен повертається, щоб протистояти терористу Бейну.',
     },
-    {
-      id: 'tt0372784',
-      title: 'Batman Begins',
-      year: '2005',
-      poster:
-        'https://ia.media-imdb.com/images/M/MV5BYzc4ODgyZmYtMGFkZC00NGQyLWJiMDItMmFmNjJiZjcxYzVmXkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_UX182_CR0,0,182,268_AL_.jpg',
-      description: 'Історія становлення Брюса Вейна: як він став Бетменом і захисником Готема.',
-    },
+
     {
       id: 'tt4116284',
       title: 'The LEGO Batman Movie',
@@ -66,15 +59,7 @@ export class App {
       description:
         'Гумористичний мультфільм про самозакоханого LEGO-Бетмена, який вчиться працювати в команді.',
     },
-    {
-      id: 'tt0112462',
-      title: 'Batman Forever',
-      year: '1995',
-      poster:
-        'https://ia.media-imdb.com/images/M/MV5BNWY3M2I0YzItNzA1ZS00MzE3LThlYTEtMTg2YjNiOTYzODQ1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg',
-      description:
-        'Бетмен стикається з Дволиким і Загадником, а також отримує нового союзника — Робіна.',
-    },
+
     {
       id: 'tt0118688',
       title: 'Batman & Robin',
