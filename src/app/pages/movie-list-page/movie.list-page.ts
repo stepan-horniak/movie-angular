@@ -2,23 +2,54 @@ import { Component } from '@angular/core';
 import { MovieCard } from '../../components/movie-card/movie-card';
 import { CommonModule } from '@angular/common';
 import { Header } from '../../components/header/header';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [MovieCard, CommonModule, Header, RouterOutlet],
+  imports: [MovieCard, CommonModule, Header],
   templateUrl: './movie-list-page.html',
   styleUrl: './movie-list-page.scss',
 })
 export class MovieList {
   public idElementAddFavorite = '';
   public idElementAddWatch = '';
+
+  favoriteList: any[] = [];
+
+  isOpenFavoriteList = false;
+  watchList: any[] = [];
+  isOpenWatchList = false;
+
   passFavoriteId(id: string) {
     this.idElementAddFavorite = id;
   }
   passWatchId(id: string) {
     this.idElementAddWatch = id;
   }
+
+  saveFavoriteListIds(list: any) {
+    for (let i = 0; i < list.length; i++) {
+      for (const el of this.batman) {
+        if (el.id === list[i] && !this.favoriteList.some((m) => m.id === list[i])) {
+          this.favoriteList.push(el);
+        }
+      }
+    }
+    this.isOpenFavoriteList = true;
+    this.isOpenWatchList = false;
+  }
+
+  saveWatchListIds(list: any) {
+    for (let i = 0; i < list.length; i++) {
+      for (const el of this.batman) {
+        if (el.id === list[i] && !this.watchList.some((m) => m.id === list[i])) {
+          this.watchList.push(el);
+        }
+      }
+    }
+    this.isOpenWatchList = true;
+    this.isOpenFavoriteList = false;
+  }
+
   batman = [
     {
       id: '96895',

@@ -2,8 +2,9 @@
   <div class="header__row">
     <nav class="header__nav nav-header">
       <ul class="nav-header__list">
-        <li class="nav-header__item">
+        <!-- <li class="nav-header__item">
           <a [routerLink]="[{ outlets: { rout2: ['favorite'] } }]" [matBadge]="favoriteListIds.length"
+
             class="demo-section">My
             favorites</a>
         </li>
@@ -11,6 +12,14 @@
           <a [routerLink]="[{ outlets: { rout2: ['watch-list'] } }]" [matBadge]="watchListIds.length"
             class="demo-section">WatchList
           </a>
+        </li> -->
+        <li class="nav-header__item">
+          <div (click)="favoriteListOpen()" class="demo-section" [matBadge]="favoriteListIds.length">My
+            favorites</div>
+        </li>
+        <li class="nav-header__item">
+          <div (click)="movieListOpen()" class="demo-section" [matBadge]="watchListIds.length">WatchList
+          </div>
         </li>
       </ul>
     </nav>
