@@ -1,1 +1,11 @@
-<app-movie-card *ngFor="let item of batman" [movie]="item"></app-movie-card>
+<app-header [addFavoriteId]="idElementAddFavorite" [addWatchId]="idElementAddWatch">
+</app-header>
+
+<router-outlet name="rout2"></router-outlet>
+
+<div class="wrapper">
+  <app-movie-card (favoritesIds)="passFavoriteId($event)" (watchIds)="passWatchId($event)" *ngFor="let item of batman"
+    [movie]="item">
+
+  </app-movie-card>
+</div>

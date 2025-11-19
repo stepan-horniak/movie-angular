@@ -3,8 +3,8 @@
     <h4 class="top-block__title">{{movie.title | transformLenght}}</h4>
     <button class="top-block__menu" matButton [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="addToFavorite()">add to favorite</button>
-      <button mat-menu-item (click)="addToWatchList()">add to watchList</button>
+      <button mat-menu-item (click)="addToFavorite(movie.id)">add to favorite</button>
+      <button mat-menu-item (click)="addToWatchList(movie.id)">add to watchList</button>
     </mat-menu>
   </div>
 

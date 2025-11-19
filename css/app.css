@@ -1,0 +1,10 @@
+:host {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.aside {
+  -ms-flex-preferred-size: 300px;
+      flex-basis: 300px;
+}

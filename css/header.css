@@ -14,3 +14,10 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+:host {
+  width: 100%;
+}
+:host .mat-badge-medium.mat-badge-overlap .mat-badge-content {
+  margin: -12px 0 -12px 0;
+}

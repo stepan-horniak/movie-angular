@@ -1,14 +1,24 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { MovieCard } from '../../components/movie-card/movie-card';
 import { CommonModule } from '@angular/common';
+import { Header } from '../../components/header/header';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [MovieCard, CommonModule],
+  imports: [MovieCard, CommonModule, Header, RouterOutlet],
   templateUrl: './movie-list-page.html',
   styleUrl: './movie-list-page.scss',
 })
 export class MovieList {
+  public idElementAddFavorite = '';
+  public idElementAddWatch = '';
+  passFavoriteId(id: string) {
+    this.idElementAddFavorite = id;
+  }
+  passWatchId(id: string) {
+    this.idElementAddWatch = id;
+  }
   batman = [
     {
       id: '96895',
@@ -45,7 +55,6 @@ export class MovieList {
       description:
         'Через вісім років після падіння Джокера Бетмен повертається, щоб протистояти терористу Бейну.',
     },
-
     {
       id: 'tt4116284',
       title: 'The LEGO Batman Movie',
@@ -55,7 +64,6 @@ export class MovieList {
       description:
         'Гумористичний мультфільм про самозакоханого LEGO-Бетмена, який вчиться працювати в команді.',
     },
-
     {
       id: 'tt0118688',
       title: 'Batman & Robin',

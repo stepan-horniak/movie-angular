@@ -3,10 +3,14 @@
     <nav class="header__nav nav-header">
       <ul class="nav-header__list">
         <li class="nav-header__item">
-          <div matBadge="4" matBadgeOverlap="false" class="demo-section">My favorites</div>
+          <a [routerLink]="[{ outlets: { rout2: ['favorite'] } }]" [matBadge]="favoriteListIds.length"
+            class="demo-section">My
+            favorites</a>
         </li>
         <li class="nav-header__item">
-          <div matBadge="3" matBadgeOverlap="false" class="demo-section">WatchList</div>
+          <a [routerLink]="[{ outlets: { rout2: ['watch-list'] } }]" [matBadge]="watchListIds.length"
+            class="demo-section">WatchList
+          </a>
         </li>
       </ul>
     </nav>

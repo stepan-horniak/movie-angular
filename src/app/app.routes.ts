@@ -6,14 +6,25 @@ import { NotPlaingPage } from './pages/not-plaing-page/not-plaing-page';
 import { PopularPage } from './pages/popular-page/popular-page';
 import { TopRatePage } from './pages/top-rate-page/top-rate-page';
 import { UpcomingPage } from './pages/upcoming-page/upcoming-page';
+import { FavoritePage } from './pages/favorite-page/favorite-page';
+import { WatchListPage } from './pages/watch-list-page/watch-list-page';
 
 export const routes: Routes = [
   { path: '', component: MovieList },
-  { path: 'movieList', component: MovieList },
+  {
+    path: 'movieList',
+    component: MovieList,
+    children: [
+      { path: 'favorite', component: FavoritePage, outlet: 'rout2' },
+      { path: 'watch-list', component: WatchListPage, outlet: 'rout2' },
+    ],
+  },
 
   { path: 'movieCard/:id', canActivate: [MovieGuard], component: MovieCardPage },
   { path: 'notPlaing', component: NotPlaingPage },
   { path: 'popular', component: PopularPage },
   { path: 'topRate', component: TopRatePage },
   { path: 'upcoming', component: UpcomingPage },
+  // { path: 'favorite', component: FavoritePage, outlet: 'rout2' },
+  // { path: 'watch-list', component: WatchListPage, outlet: 'rout2' },
 ];

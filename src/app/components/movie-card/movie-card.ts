@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { TransformLenghtPipe } from '../../pipes/transform-lenght-pipe';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { Router } from '@angular/router';
 @Component({
   selector: 'app-movie-card',
   imports: [
@@ -23,11 +22,14 @@ import { Router } from '@angular/router';
 })
 export class MovieCard {
   @Input() movie: any;
-  addToFavorite() {
-    console.log('addToFavorite');
+  @Output() favoritesIds: any = new EventEmitter();
+  @Output() watchIds: any = new EventEmitter();
+
+  addToFavorite(id: string) {
+    this.favoritesIds.emit(id);
   }
-  addToWatchList() {
-    console.log('addToWatchList');
+  addToWatchList(id: string) {
+    this.watchIds.emit(id);
   }
 
   isVisibleInfo: boolean = false;
