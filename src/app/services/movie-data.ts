@@ -79,26 +79,15 @@ export class MovieData {
 
   setFavorite(movieId: string) {
     this.favoriteListId.add(movieId);
-    console.log(this.getFavoriteListIdLength());
   }
   getFavoriteListId() {
     return this.favoriteListId;
   }
-  getFavoriteListIdLength() {
-    const transformToArray = [...this.favoriteListId];
-    const favoriteLength = transformToArray.length;
-    return favoriteLength;
-  }
+
   setWatchList(movieId: string) {
     this.watchListId.add(movieId);
-    console.log(this.getWatchListIdLength());
   }
   getWatchListId() {
     return this.watchListId;
-  }
-  getWatchListIdLength() {
-    const transformToArray = [...this.watchListId];
-    const watchListLength = transformToArray.length;
-    return watchListLength;
   }
 }

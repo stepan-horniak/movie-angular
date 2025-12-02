@@ -9,14 +9,7 @@ import { MovieData } from '../../services/movie-data';
   styleUrl: './header.scss',
 })
 export class Header implements OnInit {
-  public favoriteListLength: number = 0;
+  constructor() {}
 
-  constructor(private movieData: MovieData) {}
-
-  ngOnInit() {
-    const favoriteListLength = this.movieData.getFavoriteListIdLength();
-  }
-  showCount() {
-    console.log(this.favoriteListLength);
-  }
+  ngOnInit() {}
 }
