@@ -8,7 +8,7 @@
     </mat-menu>
   </div>
 
-  <a [routerLink]="['/movieCard', movie.id]">
+  <a [routerLink]="['/movieCard']" [queryParams]="{id: `${movie.id}`}">
     <div class="block__image">
       <img [src]="movie.poster" [alt]="movie.title">
     </div>

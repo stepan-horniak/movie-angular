@@ -1,37 +1,22 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, Output, SimpleChanges, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
+import { MovieData } from '../../services/movie-data';
 @Component({
   selector: 'app-header',
   imports: [MatBadgeModule, MatIconModule],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header implements OnChanges {
-  @Input() addFavoriteId: any;
-  @Input() addWatchId: any;
-  @Output() passFavoriteListIds: any = new EventEmitter();
-  @Output() passWatchListIds: any = new EventEmitter();
+export class Header implements OnInit {
+  public favoriteListLength: number = 0;
 
-  watchListIds: string[] = [];
-  favoriteListIds: string[] = [];
+  constructor(private movieData: MovieData) {}
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['addFavoriteId'] && this.addFavoriteId !== '') {
-      this.favoriteListIds.push(this.addFavoriteId);
-    }
-
-    if (changes['addWatchId'] && this.addWatchId !== '') {
-      this.watchListIds.push(this.addWatchId);
-    }
+  ngOnInit() {
+    const favoriteListLength = this.movieData.getFavoriteListIdLength();
   }
-
-  //========================
-  favoriteListOpen() {
-    this.passFavoriteListIds.emit(this.favoriteListIds);
-  }
-  movieListOpen() {
-    this.passWatchListIds.emit(this.watchListIds);
+  showCount() {
+    console.log(this.favoriteListLength);
   }
 }

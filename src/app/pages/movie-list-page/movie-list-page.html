@@ -1,14 +1,1 @@
-<app-header [addFavoriteId]="idElementAddFavorite" [addWatchId]="idElementAddWatch"
-  (passFavoriteListIds)="saveFavoriteListIds($event)" (passWatchListIds)="saveWatchListIds($event)">
-</app-header>
-
-<!-- <router-outlet name="rout2"></router-outlet> -->
-
-<div class="wrapper">
-
-
-  <app-movie-card (favoritesIds)="passFavoriteId($event)" (watchIds)="passWatchId($event)"
-    *ngFor="let item of (isOpenFavoriteList ? favoriteList : isOpenWatchList ? watchList : batman)" [movie]="item">
-
-  </app-movie-card>
-</div>
+<app-movie-card *ngFor="let movieEl of movies" [movie]="movieEl"></app-movie-card>

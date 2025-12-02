@@ -1,6 +1,20 @@
 :host {
-  display: flex;
+  display: grid;
+  grid-template-areas:
+    'aside header'
+    'aside page';
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 60px 1fr;
 }
 .aside {
-  flex-basis: 300px;
+  grid-area: aside;
+}
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.page {
+  grid-area: page;
 }

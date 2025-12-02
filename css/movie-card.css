@@ -17,18 +17,18 @@
   margin-right: -15px;
   overflow: hidden;
   cursor: pointer;
+}
+:host .block__image > img {
   -webkit-transition: -webkit-transform ease 0.3s;
   transition: -webkit-transform ease 0.3s;
   transition: transform ease 0.3s;
   transition: transform ease 0.3s, -webkit-transform ease 0.3s;
-}
-:host .block__image > img {
   aspect-ratio: 200/270;
   width: 100%;
   height: 100%;
 }
 @media (any-hover: hover) {
-  :host .block__image:hover {
+  :host .block__image > img:hover {
     -webkit-transition: -webkit-transform ease 0.3s;
     transition: -webkit-transform ease 0.3s;
     transition: transform ease 0.3s;

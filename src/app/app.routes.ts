@@ -11,20 +11,10 @@ import { WatchListPage } from './pages/watch-list-page/watch-list-page';
 
 export const routes: Routes = [
   { path: '', component: MovieList },
-  {
-    path: 'movieList',
-    component: MovieList,
-    children: [
-      { path: 'favorite', component: FavoritePage, outlet: 'rout2' },
-      { path: 'watch-list', component: WatchListPage, outlet: 'rout2' },
-    ],
-  },
-
-  { path: 'movieCard/:id', canActivate: [MovieGuard], component: MovieCardPage },
+  { path: 'movieList', component: MovieList },
+  { path: 'movieCard', canActivate: [MovieGuard], component: MovieCardPage },
   { path: 'notPlaing', component: NotPlaingPage },
   { path: 'popular', component: PopularPage },
   { path: 'topRate', component: TopRatePage },
   { path: 'upcoming', component: UpcomingPage },
-  // { path: 'favorite', component: FavoritePage, outlet: 'rout2' },
-  // { path: 'watch-list', component: WatchListPage, outlet: 'rout2' },
 ];

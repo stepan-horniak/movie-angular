@@ -1,16 +1,16 @@
 <div class="movie-card">
   <div class="movie-card__top top-movie-card">
-    <h2 class="top-movie-card__title">{{movieEl[0].title}}</h2>
+    <h2 class="top-movie-card__title">{{movie.title}}</h2>
   </div>
-  <div class="movie-card__image"><img [src]="movieEl[0].poster" [alt]="movieEl[0].title"></div>
-  <div class="movie-card__info">date: {{movieEl[0].year}}</div>
-  <div class="movie-card__info-text">{{movieEl[0].description}}</div>
+  <div class="movie-card__image"><img [src]="movie.poster" [alt]="movie.title"></div>
+  <div class="movie-card__info">date: {{movie.year}}</div>
+  <div class="movie-card__info-text">{{movie.description}}</div>
   <div class="movie-card__buttons">
-    <button class="movie-card__buttons-favorites" matFab extended>
+    <button class="movie-card__buttons-favorites" matFab extended (click)="addToFavorite(movie.id)">
       <span class="material-icons">favorite_border</span>
       add to favorites
     </button>
-    <button class="movie-card__buttons-watch-list" matFab extended>
+    <button class="movie-card__buttons-watch-list" matFab extended (click)="addToWatchList(movie.id)">
       <mat-icon>bookmark_border</mat-icon>
       add to watch list
     </button>
