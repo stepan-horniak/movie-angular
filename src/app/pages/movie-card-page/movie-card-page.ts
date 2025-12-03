@@ -15,10 +15,19 @@ export class MovieCardPage implements OnInit {
   constructor(private route: ActivatedRoute, private movieData: MovieData) {}
 
   ngOnInit() {
-    const idMovie = this.route.snapshot.queryParams['id'];
-    const movieList = this.movieData.getMovies();
-    const searchMovieEl = movieList.find((movie) => movie.id === idMovie);
-    searchMovieEl ? (this.movie = searchMovieEl) : null;
+    const idMovie = Number(this.route.snapshot.queryParams['id']);
+
+    this.movieData.getMoviesAPi().subscribe((response) => {
+      const movielistFromApi = response.results;
+
+      // Знаходимо потрібний фільм
+      const searchMovieEl = movielistFromApi.find((movie: any) => movie.id === idMovie);
+
+      if (searchMovieEl) {
+        this.movie = searchMovieEl;
+        console.log('Знайдений фільм:', this.movie);
+      }
+    });
   }
   addToWatchList(id: string) {
     this.movieData.setWatchList(id);

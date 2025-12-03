@@ -13,6 +13,8 @@ export class MovieList implements OnInit {
   movies: any[] = [];
   constructor(private movieData: MovieData) {}
   ngOnInit() {
-    this.movies = this.movieData.getMovies();
+    this.movieData.getMoviesAPi().subscribe((movie) => {
+      this.movies = movie.results;
+    });
   }
 }

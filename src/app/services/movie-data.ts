@@ -1,80 +1,38 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Movie, MovieResponse } from '../models/movie.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieData {
-  moviesList = [
-    {
-      id: '96895',
-      title: 'Batman',
-      year: '1989',
-      poster:
-        'https://images-na.ssl-images-amazon.com/images/M/MV5BMTYwNjAyODIyMF5BMl5BanBnXkFtZTYwNDMwMDk2._V1_.jpg',
-      description: 'Темний лицар Готема вперше протистоїть Джокеру, який сіє хаос у місті.',
-    },
-    {
-      id: 'tt0468569',
-      title: 'The Dark Knight',
-      year: '2008',
-      poster:
-        'https://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg',
-      description:
-        'Бетмен стикається з геніальним злочинцем Джокером, який перевіряє межі справедливості.',
-    },
-    {
-      id: 'tt2975590',
-      title: 'Batman v Superman: Dawn of Justice Batman v Superman: Dawn of Justice',
-      year: '2016',
-      poster:
-        'https://ia.media-imdb.com/images/M/MV5BYThjYzcyYzItNTVjNy00NDk0LTgwMWQtYjMwNmNlNWJhMzMyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg',
-      description:
-        'Двоє супергероїв — Бетмен і Супермен — вступають у конфлікт, що може зруйнувати світ.',
-    },
-    {
-      id: 'tt1345836',
-      title: 'The Dark Knight Rises',
-      year: '2012',
-      poster:
-        'https://ia.media-imdb.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_UX182_CR0,0,182,268_AL_.jpg',
-      description:
-        'Через вісім років після падіння Джокера Бетмен повертається, щоб протистояти терористу Бейну.',
-    },
+  keyApi: string = '990acf64959e089026c70ce56aa97124';
+  tokenApi: string =
+    'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OTBhY2Y2NDk1OWUwODkwMjZjNzBjZTU2YWE5NzEyNCIsIm5iZiI6MTc2NDc5MzIxOC41Nzc5OTk4LCJzdWIiOiI2OTMwOWI4MmJmMDgwZmNjNjZjM2RjMmYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.1vDXf-l4gdHnv1IUtHReLNBkodNhsRhDCmajs4dss3g';
+  baseUrl: string = 'https://api.themoviedb.org/3/movie';
 
-    {
-      id: 'tt4116284',
-      title: 'The LEGO Batman Movie',
-      year: '2017',
-      poster:
-        'https://ia.media-imdb.com/images/M/MV5BMTcyNTEyOTY0M15BMl5BanBnXkFtZTgwOTAyNzU3MDI@._V1_UX182_CR0,0,182,268_AL_.jpg',
-      description:
-        'Гумористичний мультфільм про самозакоханого LEGO-Бетмена, який вчиться працювати в команді.',
-    },
-
-    {
-      id: 'tt0118688',
-      title: 'Batman & Robin',
-      year: '1997',
-      poster:
-        'https://ia.media-imdb.com/images/M/MV5BMGQ5YTM1NmMtYmIxYy00N2VmLWJhZTYtN2EwYTY3MWFhOTczXkEyXkFqcGdeQXVyNTA2NTI0MTY@._V1_UX182_CR0,0,182,268_AL_.jpg',
-      description:
-        'Бетмен і Робін борються проти Містера Фріза та Отруйної Айві, які загрожують заморозити Готем.',
-    },
-    {
-      id: 'tt0103776',
-      title: 'Batman Returns',
-      year: '1992',
-      poster:
-        'https://ia.media-imdb.com/images/M/MV5BOGZmYzVkMmItM2NiOS00MDI3LWI4ZWQtMTg0YWZkODRkMmViXkEyXkFqcGdeQXVyODY0NzcxNw@@._V1_UX182_CR0,0,182,268_AL_.jpg',
-      description:
-        'Бетмен протистоїть Пінгвіну та загадковій Жінці-Кішці, які об’єднуються проти нього.',
-    },
-  ];
   favoriteListId: Set<string> = new Set();
   watchListId: Set<string> = new Set();
 
+  constructor(private http: HttpClient) {}
+
   getMovies() {
-    return this.moviesList;
+    return [1, 2];
+  }
+  getMoviesAPi(): Observable<MovieResponse> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.tokenApi}`,
+      Accept: 'application/json',
+    });
+
+    return this.http.get<MovieResponse>(`${this.baseUrl}/now_playing`, {
+      headers,
+      params: {
+        language: 'en-US',
+        page: 1,
+      },
+    });
   }
 
   setFavorite(movieId: string) {

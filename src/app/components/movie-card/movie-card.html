@@ -10,7 +10,7 @@
 
   <a [routerLink]="['/movieCard']" [queryParams]="{id: `${movie.id}`}">
     <div class="block__image">
-      <img [src]="movie.poster" [alt]="movie.title">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" [alt]="movie.title">
     </div>
   </a>
   <div class="block__info info-block">
@@ -20,9 +20,9 @@
     </button>
     @if (isVisibleInfo) {
 
-    <div class="info-block__date">дата випуску: {{movie.year}}</div>
+    <div class="info-block__date">дата випуску: {{movie.release_date}}</div>
     <p class="info-block__info-text">
-      {{movie.description}}
+      {{movie.overview}}
     </p>
     }
   </div>
