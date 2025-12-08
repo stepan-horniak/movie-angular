@@ -1,20 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { MovieCard } from '../../components/movie-card/movie-card';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { MovieResponse } from '../../models/movie.model';
+import { Observable } from 'rxjs';
 import { MovieData } from '../../services/movie-data';
+import { AsyncPipe, CommonModule } from '@angular/common';
+import { MovieCard } from '../../components/movie-card/movie-card';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [MovieCard, CommonModule],
+  imports: [AsyncPipe, CommonModule, MovieCard],
+  standalone: true,
   templateUrl: './movie-list-page.html',
   styleUrl: './movie-list-page.scss',
 })
-export class MovieList implements OnInit {
-  movies: any[] = [];
+export class MovieList {
+  movies$!: Observable<MovieResponse>;
+  moviespop$!: Observable<MovieResponse>;
+
   constructor(private movieData: MovieData) {}
+
   ngOnInit() {
-    this.movieData.getMoviesAPi().subscribe((movie) => {
-      this.movies = movie.results;
-    });
+    this.movies$ = this.movieData.getMoviesAPi('now_playing');
   }
 }

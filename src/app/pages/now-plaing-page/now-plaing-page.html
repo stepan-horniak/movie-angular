@@ -1,0 +1,4 @@
+@if (movies$ | async; as data) {
+<app-movie-card *ngFor="let movie of data.results" [movie]="movie">
+</app-movie-card>
+}

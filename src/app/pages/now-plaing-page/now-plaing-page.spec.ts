@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotPlaingPage } from './not-plaing-page';
+import { NowPlaingPage } from './now-plaing-page';
 
 describe('NotPlaingPage', () => {
-  let component: NotPlaingPage;
-  let fixture: ComponentFixture<NotPlaingPage>;
+  let component: NowPlaingPage;
+  let fixture: ComponentFixture<NowPlaingPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NotPlaingPage]
-    })
-    .compileComponents();
+      imports: [NowPlaingPage],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(NotPlaingPage);
+    fixture = TestBed.createComponent(NowPlaingPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

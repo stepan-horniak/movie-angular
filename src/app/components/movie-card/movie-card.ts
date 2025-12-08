@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MovieData } from '../../services/movie-data';
+import { Movie } from '../../models/movie.model';
 @Component({
   selector: 'app-movie-card',
   imports: [
@@ -24,7 +25,7 @@ import { MovieData } from '../../services/movie-data';
 export class MovieCard {
   constructor(private movieData: MovieData) {}
 
-  @Input() movie: any;
+  @Input() movie: Movie | any;
 
   isVisibleInfo: boolean = false;
 

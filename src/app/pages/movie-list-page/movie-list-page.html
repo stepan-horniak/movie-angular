@@ -1,1 +1,6 @@
-<app-movie-card *ngFor="let movieEl of movies" [movie]="movieEl"></app-movie-card>
+@if (movies$ | async; as data) {
+@for (movieEl of data.results; track $index) {
+<app-movie-card [movie]="movieEl">
+</app-movie-card>
+}
+}
