@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ActivatedRoute } from '@angular/router';
 import { MovieData } from '../../services/movie-data';
+import { Movie } from '../../models/movie.model';
 @Component({
   selector: 'app-movie-card-page',
   imports: [MatIconModule, MatButtonModule],
@@ -10,28 +10,18 @@ import { MovieData } from '../../services/movie-data';
   styleUrl: './movie-card-page.scss',
 })
 export class MovieCardPage implements OnInit {
-  public movie: any;
+  public movie!: Movie;
 
-  constructor(private route: ActivatedRoute, private movieData: MovieData) {}
+  constructor(private movieData: MovieData) {}
 
   ngOnInit() {
-    // const idMovie = Number(this.route.snapshot.queryParams['id']);
-    // this.movieData.getMoviesAPi().subscribe((response) => {
-    //   const movielistFromApi = response.results;
-    //   // Знаходимо потрібний фільм
-    //   const searchMovieEl = movielistFromApi.find((movie: any) => movie.id === idMovie);
-    //   if (searchMovieEl) {
-    //     this.movie = searchMovieEl;
-    //     console.log('Знайдений фільм:', this.movie);
-    //   }
-    // });
+    this.movie = this.movieData.getMovieToRouteMovieCard();
   }
 
-  // addToWatchList(id: string) {
-  //   this.movieData.setWatchList(id);
-  //   console.log(id);
-  // }
-  // addToFavorite(id: string) {
-  //   this.movieData.setFavorite(id);
-  // }
+  addToFavorite(movie: Movie) {
+    this.movieData.setFavorite(movie);
+  }
+  addToWatchList(movie: Movie) {
+    this.movieData.setWatchList(movie);
+  }
 }

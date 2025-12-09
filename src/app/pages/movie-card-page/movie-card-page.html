@@ -1,4 +1,4 @@
-<!-- @if (movie) {
+@if (movie) {
 <div class="movie-card">
   <div class="movie-card__top top-movie-card">
     <h2 class="top-movie-card__title">{{movie.title}}</h2>
@@ -8,14 +8,14 @@
   <div class="movie-card__info">date: {{movie.release_date}}</div>
   <div class="movie-card__info-text">{{movie.overview}}</div>
   <div class="movie-card__buttons">
-    <button class="movie-card__buttons-favorites" matFab extended (click)="addToFavorite(movie.id)">
+    <button class="movie-card__buttons-favorites" matFab extended (click)="addToFavorite(movie)">
       <span class="material-icons">favorite_border</span>
       add to favorites
     </button>
-    <button class="movie-card__buttons-watch-list" matFab extended (click)="addToWatchList(movie.id)">
+    <button class="movie-card__buttons-watch-list" matFab extended (click)="addToWatchList(movie)">
       <mat-icon>bookmark_border</mat-icon>
       add to watch list
     </button>
   </div>
 </div>
-} -->
+}

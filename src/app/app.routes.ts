@@ -11,6 +11,8 @@ import { WatchListPage } from './pages/watch-list-page/watch-list-page';
 
 export const routes: Routes = [
   { path: '', component: MovieList },
+  { path: 'favorite', component: FavoritePage },
+  { path: 'watchList', component: WatchListPage },
   { path: 'movieList', component: MovieList },
   { path: 'movieCard', canActivate: [MovieGuard], component: MovieCardPage },
   { path: 'nowPlaing', component: NowPlaingPage },

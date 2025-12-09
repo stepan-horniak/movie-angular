@@ -4,12 +4,12 @@
       <ul class="nav-header__list">
 
         <li class="nav-header__item">
-          <div class="demo-section" [matBadge]="1">My
-            favorites</div>
+          <a routerLink="favorite" class="demo-section" [matBadge]="favoriteCount">My
+            favorites</a>
         </li>
         <li class="nav-header__item">
-          <div class="demo-section" [matBadge]="4">WatchList
-          </div>
+          <a routerLink="watchList" class="demo-section" [matBadge]="watchCount">WatchList
+          </a>
         </li>
       </ul>
     </nav>

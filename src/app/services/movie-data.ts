@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Movie, MovieResponse } from '../models/movie.model';
 
 @Injectable({
@@ -12,8 +12,11 @@ export class MovieData {
     'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OTBhY2Y2NDk1OWUwODkwMjZjNzBjZTU2YWE5NzEyNCIsIm5iZiI6MTc2NDc5MzIxOC41Nzc5OTk4LCJzdWIiOiI2OTMwOWI4MmJmMDgwZmNjNjZjM2RjMmYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.1vDXf-l4gdHnv1IUtHReLNBkodNhsRhDCmajs4dss3g';
   baseUrl: string = 'https://api.themoviedb.org/3/movie';
 
-  favoriteListId: Set<string> = new Set();
-  watchListId: Set<string> = new Set();
+  favoriteListSubject = new BehaviorSubject<Movie[]>([]);
+  favoriteList: Movie[] = [];
+  watchListSubject = new BehaviorSubject<Movie[]>([]);
+  watchList: Movie[] = [];
+  movieRouteToCard!: Movie;
 
   constructor(private http: HttpClient) {}
 
@@ -34,17 +37,30 @@ export class MovieData {
     });
   }
 
-  setFavorite(movieId: string) {
-    this.favoriteListId.add(movieId);
+  setFavorite(movie: Movie) {
+    if (!this.favoriteList.find((m) => m.id === movie.id)) {
+      this.favoriteList.push(movie);
+      this.favoriteListSubject.next([...this.favoriteList]);
+    }
   }
-  getFavoriteListId() {
-    return this.favoriteListId;
+  getFavoriteList(): Observable<Movie[]> {
+    return this.favoriteListSubject.asObservable();
   }
 
-  setWatchList(movieId: string) {
-    this.watchListId.add(movieId);
+  setWatchList(movie: Movie) {
+    if (!this.watchList.find((m) => m.id === movie.id)) {
+      this.watchList.push(movie);
+      this.watchListSubject.next([...this.watchList]);
+    }
   }
-  getWatchListId() {
-    return this.watchListId;
+  getWatchList() {
+    return this.watchListSubject.asObservable();
+  }
+
+  setMovieToRouteMovieCard(movie: Movie) {
+    this.movieRouteToCard = movie;
+  }
+  getMovieToRouteMovieCard() {
+    return this.movieRouteToCard;
   }
 }

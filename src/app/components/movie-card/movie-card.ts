@@ -25,14 +25,18 @@ import { Movie } from '../../models/movie.model';
 export class MovieCard {
   constructor(private movieData: MovieData) {}
 
-  @Input() movie: Movie | any;
+  @Input() movie!: Movie;
 
   isVisibleInfo: boolean = false;
 
-  addToFavorite(id: string) {
-    this.movieData.setFavorite(id);
+  addToFavorite(movie: Movie) {
+    this.movieData.setFavorite(movie);
   }
-  addToWatchList(id: string) {
-    this.movieData.setWatchList(id);
+  addToWatchList(movie: Movie) {
+    this.movieData.setWatchList(movie);
+  }
+
+  routeToMovie(movie: Movie) {
+    return this.movieData.setMovieToRouteMovieCard(movie);
   }
 }

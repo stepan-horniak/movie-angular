@@ -1,1 +1,7 @@
-<p>favorite-page works!</p>
+@if (movieList.length) {
+@for (movieEl of movieList; track $index) {
+<app-movie-card [movie]="movieEl"></app-movie-card>
+}
+} @else {
+<div class="favorite-page__empty">У вас немає улюблених фільмів</div>
+}
