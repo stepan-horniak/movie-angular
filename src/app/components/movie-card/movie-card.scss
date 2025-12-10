@@ -6,8 +6,9 @@
     width: 200px;
     background-color: white;
     border-radius: 12px;
+    overflow: hidden;
     padding: 15px;
-
+    background-color: rgb(225, 224, 224);
     // .block__top
 
     &__top {
@@ -51,7 +52,9 @@
     // .top-block__title
 
     &__title {
+      font-weight: 700;
     }
+
     //.top-block__menu
     &__menu {
       padding: 5px !important;

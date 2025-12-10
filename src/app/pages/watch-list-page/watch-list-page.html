@@ -1,7 +1,11 @@
 @if (movieList.length) {
 @for (movieEl of movieList; track $index) {
-<app-movie-card [movie]="movieEl"></app-movie-card>
+<app-movie-card [movie]="movieEl">
+  <button class="">
+    <mat-icon (click)="deleteMovie(movieEl)">clear</mat-icon>
+  </button>
+</app-movie-card>
 }
 } @else {
-<div class="favorite-page__empty">У вас немає улюблених фільмів</div>
+<div class="favorite-page__empty">Список перегляду фільмів пустий</div>
 }

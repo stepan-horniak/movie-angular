@@ -10,7 +10,9 @@
   width: 200px;
   background-color: white;
   border-radius: 12px;
+  overflow: hidden;
   padding: 15px;
+  background-color: rgb(225, 224, 224);
 }
 :host .block__image {
   margin-left: -15px;
@@ -52,6 +54,9 @@
 }
 :host .top-block mat-icon {
   margin: 0;
+}
+:host .top-block__title {
+  font-weight: 700;
 }
 :host .top-block__menu {
   padding: 5px !important;

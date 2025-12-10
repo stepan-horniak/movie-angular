@@ -1,11 +1,15 @@
 <div class="block">
+
   <div class="block__top top-block">
-    <h4 class="top-block__title">{{movie.title | transformLenght}}</h4>
-    <button class="top-block__menu" matButton [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="addToFavorite(movie)">add to favorite</button>
-      <button mat-menu-item (click)="addToWatchList(movie)">add to watchList</button>
-    </mat-menu>
+    <h4 class="top-block__title">{{movie.title | transformLenght:25}}</h4>
+    <ng-content>
+      <button class="top-block__menu" matButton [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="addToFavorite(movie)">add to favorite</button>
+        <button mat-menu-item (click)="addToWatchList(movie)">add to watchList</button>
+      </mat-menu>
+
+    </ng-content>
   </div>
 
   <a [routerLink]="['/movieCard']" (click)="routeToMovie(movie)">
@@ -22,7 +26,7 @@
 
     <div class="info-block__date">дата випуску: {{movie.release_date}}</div>
     <p class="info-block__info-text">
-      {{movie.overview}}
+      {{movie.overview | transformLenght:100}}
     </p>
     }
   </div>

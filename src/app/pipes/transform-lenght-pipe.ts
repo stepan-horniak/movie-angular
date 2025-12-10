@@ -5,13 +5,13 @@ import { Pipe, PipeTransform } from '@angular/core';
   pure: true,
 })
 export class TransformLenghtPipe implements PipeTransform {
-  transform(value: string): string {
-    if (value.length > 25) {
+  transform(value: string, textLength: number): string {
+    if (value.length > textLength) {
       const textTransform: string[] = [];
-      for (let i = 0; i < 25; i++) {
+      for (let i = 0; i < textLength; i++) {
         textTransform.push(value[i]);
       }
-      return textTransform.join('') + '...'; // додаємо три крапки
+      return textTransform.join('') + '...';
     } else {
       return value;
     }

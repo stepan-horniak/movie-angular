@@ -1,12 +1,3 @@
-<!-- @if (movies$ | async; as data) {
-@for (movieEl of data.results; track $index) {
-<app-movie-card [movie]="movieEl">
-</app-movie-card>
+@for (movieEl of movies$ |async ; track $index) {
+<app-movie-card [movie]="movieEl"></app-movie-card>
 }
-} -->
-<!-- @if (movies | async; as data) { -->
-@for (movieEl of movieList; track $index) {
-<app-movie-card [movie]="movieEl">
-</app-movie-card>
-}
-<!-- } -->

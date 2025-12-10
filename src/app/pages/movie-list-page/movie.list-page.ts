@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Movie, MovieResponse } from '../../models/movie.model';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Movie } from '../../models/movie.model';
+import { forkJoin, map, Observable, Subscription } from 'rxjs';
 import { MovieData } from '../../services/movie-data';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { MovieCard } from '../../components/movie-card/movie-card';
@@ -12,24 +12,18 @@ import { MovieCard } from '../../components/movie-card/movie-card';
   templateUrl: './movie-list-page.html',
   styleUrl: './movie-list-page.scss',
 })
-export class MovieList implements OnInit, OnDestroy {
-  movieList: Movie[] = [];
-  private subscriptions: Subscription[] = [];
+export class MovieList implements OnInit {
+  movies$!: Observable<Movie[]>;
+
   constructor(private movieData: MovieData) {}
 
   ngOnInit() {
     const apiText = ['now_playing', 'popular', 'top_rated', 'upcoming'];
-    for (const key of apiText) {
-      const sub = this.movieData.getMoviesAPi(key).subscribe((data) => {
-        this.movieList.push(...data.results);
-      });
 
-      this.subscriptions.push(sub);
-    }
-  }
-  ngOnDestroy() {
-    if (this.subscriptions.length) {
-      this.subscriptions.forEach((s) => s.unsubscribe());
-    }
+    const requests = apiText.map((key) => this.movieData.getMoviesAPi(key));
+
+    this.movies$ = forkJoin(requests).pipe(
+      map((resArr) => resArr.flatMap((r) => r.results)) // об’єднати всі results в один масив
+    );
   }
 }
