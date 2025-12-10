@@ -21,14 +21,12 @@ export class MovieData {
   constructor(private http: HttpClient) {}
 
   getMoviesAPi(movieCategory: string): Observable<MovieResponse> {
-    let category = movieCategory;
-
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.tokenApi}`,
       Accept: 'application/json',
     });
 
-    return this.http.get<MovieResponse>(`${this.baseUrl}/${category}`, {
+    return this.http.get<MovieResponse>(`${this.baseUrl}/${movieCategory}`, {
       headers,
       params: {
         language: 'en-US',
