@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieCard } from '../../components/movie-card/movie-card';
-import { MovieData } from '../../services/movie-data';
+import { MovieData } from '../../services/movie.service';
 import { Movie } from '../../models/movie.model';
 import { MatIcon } from '@angular/material/icon';
 
@@ -14,11 +14,7 @@ export class FavoritePage implements OnInit {
   movieList: Movie[] = [];
 
   constructor(private movieData: MovieData) {}
-  ngOnInit() {
-    this.movieData.getFavoriteList().subscribe((movie) => {
-      this.movieList = movie;
-    });
-  }
+  ngOnInit() {}
   deleteMovie(movie: Movie) {
     this.movieList = this.movieList.filter((m) => m.id !== movie.id);
     this.movieData.favoriteList = this.movieList;

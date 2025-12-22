@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieData } from '../../services/movie-data';
+import { MovieData } from '../../services/movie.service';
 import { Movie } from '../../models/movie.model';
 import { MovieCard } from '../../components/movie-card/movie-card';
 import { MatIcon } from '@angular/material/icon';
@@ -14,11 +14,7 @@ export class WatchListPage implements OnInit {
   movieList: Movie[] = [];
 
   constructor(private movieData: MovieData) {}
-  ngOnInit() {
-    this.movieData.getWatchList().subscribe((movie) => {
-      this.movieList = movie;
-    });
-  }
+  ngOnInit() {}
   deleteMovie(movie: Movie) {
     this.movieList = this.movieList.filter((m) => m.id !== movie.id);
     this.movieData.watchList = this.movieList;

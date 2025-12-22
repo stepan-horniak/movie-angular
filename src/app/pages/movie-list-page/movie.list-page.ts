@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie.model';
 import { forkJoin, map, Observable, Subscription } from 'rxjs';
-import { MovieData } from '../../services/movie-data';
+import { MovieData } from '../../services/movie.service';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { MovieCard } from '../../components/movie-card/movie-card';
 

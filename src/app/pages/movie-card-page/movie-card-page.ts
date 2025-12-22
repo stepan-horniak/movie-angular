@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MovieData } from '../../services/movie-data';
+import { MovieData } from '../../services/movie.service';
 import { Movie } from '../../models/movie.model';
 @Component({
   selector: 'app-movie-card-page',
@@ -14,14 +14,8 @@ export class MovieCardPage implements OnInit {
 
   constructor(private movieData: MovieData) {}
 
-  ngOnInit() {
-    this.movie = this.movieData.getMovieToRouteMovieCard();
-  }
+  ngOnInit() {}
 
-  addToFavorite(movie: Movie) {
-    this.movieData.setFavorite(movie);
-  }
-  addToWatchList(movie: Movie) {
-    this.movieData.setWatchList(movie);
-  }
+  addToFavorite(movie: Movie) {}
+  addToWatchList(movie: Movie) {}
 }

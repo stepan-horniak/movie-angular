@@ -34,31 +34,4 @@ export class MovieData {
       },
     });
   }
-
-  setFavorite(movie: Movie) {
-    if (!this.favoriteList.find((m) => m.id === movie.id)) {
-      this.favoriteList.push(movie);
-      this.favoriteListSubject.next([...this.favoriteList]);
-    }
-  }
-  getFavoriteList(): Observable<Movie[]> {
-    return this.favoriteListSubject.asObservable();
-  }
-
-  setWatchList(movie: Movie) {
-    if (!this.watchList.find((m) => m.id === movie.id)) {
-      this.watchList.push(movie);
-      this.watchListSubject.next([...this.watchList]);
-    }
-  }
-  getWatchList() {
-    return this.watchListSubject.asObservable();
-  }
-
-  setMovieToRouteMovieCard(movie: Movie) {
-    this.movieRouteToCard = movie;
-  }
-  getMovieToRouteMovieCard() {
-    return this.movieRouteToCard;
-  }
 }

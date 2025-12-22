@@ -1,13 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { TransformLenghtPipe } from '../../pipes/transform-lenght-pipe';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { MovieData } from '../../services/movie-data';
+import { MovieData } from '../../services/movie.service';
 import { Movie } from '../../models/movie.model';
+import { Store } from '@ngrx/store';
+import { setToFavoriteList, setToWatchList } from '../../store/actions';
+import { selectFavoriteListMovies } from '../../store/selectors';
 @Component({
   selector: 'app-movie-card',
   imports: [
@@ -23,20 +26,17 @@ import { Movie } from '../../models/movie.model';
   styleUrl: './movie-card.scss',
 })
 export class MovieCard {
-  constructor(private movieData: MovieData) {}
-
+  constructor(private store: Store) {}
   @Input() movie!: Movie;
 
   isVisibleInfo: boolean = false;
 
   addToFavorite(movie: Movie) {
-    this.movieData.setFavorite(movie);
+    this.store.dispatch(setToFavoriteList({ movie }));
   }
   addToWatchList(movie: Movie) {
-    this.movieData.setWatchList(movie);
+    this.store.dispatch(setToWatchList({ movie }));
   }
 
-  routeToMovie(movie: Movie) {
-    return this.movieData.setMovieToRouteMovieCard(movie);
-  }
+  routeToMovie(movie: Movie) {}
 }

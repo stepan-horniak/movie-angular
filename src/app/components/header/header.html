@@ -4,11 +4,11 @@
       <ul class="nav-header__list">
 
         <li class="nav-header__item">
-          <a routerLink="favorite" class="demo-section" [matBadge]="favoriteCount">My
+          <a routerLink="favorite" class="demo-section" [matBadge]="countFavorite$ | async">My
             favorites</a>
         </li>
         <li class="nav-header__item">
-          <a routerLink="watchList" class="demo-section" [matBadge]="watchCount">WatchList
+          <a routerLink="watchList" class="demo-section" [matBadge]="3">WatchList
           </a>
         </li>
       </ul>
