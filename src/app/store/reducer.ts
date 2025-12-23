@@ -1,25 +1,32 @@
 import { createReducer, on } from '@ngrx/store';
 import { initialMoviesState } from './state';
 import * as MoviesActions from './actions';
-import { selectMoviesState } from './selectors';
 export const moviesReducer = createReducer(
   initialMoviesState,
 
   on(MoviesActions.setToFavoriteList, (state, { movie }) => ({
     ...state,
-    favoriteListMovies: state.favoriteListMovies.includes(movie)
+    favoriteListMovies: state.favoriteListMovies.some((el) => el.id === movie.id)
       ? state.favoriteListMovies
       : [...state.favoriteListMovies, movie],
   })),
   on(MoviesActions.setToWatchList, (state, { movie }) => ({
     ...state,
-    watchListMovies: state.watchListMovies.includes(movie)
+    watchListMovies: state.watchListMovies.some((el) => el.id === movie.id)
       ? state.watchListMovies
       : [...state.watchListMovies, movie],
-  }))
+  })),
+  on(MoviesActions.deleteMovieInFavoriteList, (state, { movieId }) => ({
+    ...state,
+    favoriteListMovies: state.favoriteListMovies.filter((el) => el.id !== movieId),
+  })),
+  on(MoviesActions.deleteMovieInWatchList, (state, { movieId }) => ({
+    ...state,
+    watchListMovies: state.watchListMovies.filter((el) => el.id !== movieId),
+  })),
 
-  // on(MoviesActions.setMovieElRouteToCard, (state, { movie }) => ({
-  //     ...state,
-  //      movieElRouteToCard: movie
-  // }))
+  on(MoviesActions.setMovieToRoute, (state, { movie }) => ({
+    ...state,
+    movieElRouteToCard: movie,
+  }))
 );

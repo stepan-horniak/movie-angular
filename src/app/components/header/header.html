@@ -8,7 +8,7 @@
             favorites</a>
         </li>
         <li class="nav-header__item">
-          <a routerLink="watchList" class="demo-section" [matBadge]="3">WatchList
+          <a routerLink="watchList" class="demo-section" [matBadge]="countWatchList$ | async">WatchList
           </a>
         </li>
       </ul>

@@ -4,6 +4,7 @@ import { forkJoin, map, Observable, Subscription } from 'rxjs';
 import { MovieData } from '../../services/movie.service';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { MovieCard } from '../../components/movie-card/movie-card';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-movie-list',
@@ -15,15 +16,15 @@ import { MovieCard } from '../../components/movie-card/movie-card';
 export class MovieList implements OnInit {
   movies$!: Observable<Movie[]>;
 
-  constructor(private movieData: MovieData) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
     const apiText = ['now_playing', 'popular', 'top_rated', 'upcoming'];
 
-    const requests = apiText.map((key) => this.movieData.getMoviesAPi(key));
+    // const requests = apiText.map((key) => this.movieData.getMoviesAPi(key));
 
-    this.movies$ = forkJoin(requests).pipe(
-      map((resArr) => resArr.flatMap((r) => r.results)) // об’єднати всі results в один масив
-    );
+    // this.movies$ = forkJoin(requests).pipe(
+    //   map((resArr) => resArr.flatMap((r) => r.results)) // об’єднати всі results в один масив
+    // );
   }
 }

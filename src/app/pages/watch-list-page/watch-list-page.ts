@@ -3,21 +3,27 @@ import { MovieData } from '../../services/movie.service';
 import { Movie } from '../../models/movie.model';
 import { MovieCard } from '../../components/movie-card/movie-card';
 import { MatIcon } from '@angular/material/icon';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectWatchListMovies } from '../../store/selectors';
+import { CommonModule } from '@angular/common';
+import { deleteMovieInWatchList } from '../../store/actions';
 
 @Component({
   selector: 'app-watch-list-page',
-  imports: [MovieCard, MatIcon],
+  imports: [MovieCard, MatIcon, CommonModule],
   templateUrl: './watch-list-page.html',
   styleUrl: './watch-list-page.scss',
 })
 export class WatchListPage implements OnInit {
-  movieList: Movie[] = [];
+  watchListMovies$!: Observable<Movie[]>;
 
-  constructor(private movieData: MovieData) {}
-  ngOnInit() {}
-  deleteMovie(movie: Movie) {
-    this.movieList = this.movieList.filter((m) => m.id !== movie.id);
-    this.movieData.watchList = this.movieList;
-    this.movieData.watchListSubject.next([...this.movieList]);
+  constructor(private store: Store) {}
+
+  ngOnInit() {
+    this.watchListMovies$ = this.store.select(selectWatchListMovies);
+  }
+  deleteMovie(movieId: Number) {
+    this.store.dispatch(deleteMovieInWatchList({ movieId: movieId }));
   }
 }

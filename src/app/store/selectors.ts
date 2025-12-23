@@ -11,6 +11,16 @@ export const selectFavoriteListCount = createSelector(
   selectMoviesState,
   (state) => state.favoriteListMovies.length
 );
-// favoriteListMovies: [],
-// watchListMovies: [],
-// movieElRouteToCard: null,
+export const selectWatchListCount = createSelector(
+  selectMoviesState,
+  (state) => state.watchListMovies.length
+);
+export const selectWatchListMovies = createSelector(
+  selectMoviesState,
+  (state) => state.watchListMovies
+);
+
+export const selectMovieToRoute = createSelector(
+  selectMoviesState,
+  (state) => state.movieElRouteToCard
+);

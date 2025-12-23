@@ -1,23 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieCard } from '../../components/movie-card/movie-card';
-import { MovieData } from '../../services/movie.service';
 import { Movie } from '../../models/movie.model';
 import { MatIcon } from '@angular/material/icon';
+import { Store } from '@ngrx/store';
+import { selectFavoriteListMovies } from '../../store/selectors';
+import { filter, map, Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { time } from 'console';
+import { deleteMovieInFavoriteList } from '../../store/actions';
 
 @Component({
   selector: 'app-favorite-page',
-  imports: [MovieCard, MatIcon],
+  imports: [MovieCard, MatIcon, CommonModule],
   templateUrl: './favorite-page.html',
   styleUrl: './favorite-page.scss',
 })
 export class FavoritePage implements OnInit {
-  movieList: Movie[] = [];
+  movieList$!: Observable<Movie[]>;
 
-  constructor(private movieData: MovieData) {}
-  ngOnInit() {}
-  deleteMovie(movie: Movie) {
-    this.movieList = this.movieList.filter((m) => m.id !== movie.id);
-    this.movieData.favoriteList = this.movieList;
-    this.movieData.favoriteListSubject.next([...this.movieList]);
+  constructor(private store: Store) {}
+  ngOnInit() {
+    this.movieList$ = this.store.select(selectFavoriteListMovies);
+  }
+  deleteMovie(movieId: Number) {
+    this.store.dispatch(deleteMovieInFavoriteList({ movieId: movieId }));
   }
 }

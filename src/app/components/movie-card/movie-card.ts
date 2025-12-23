@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
 import { MovieData } from '../../services/movie.service';
 import { Movie } from '../../models/movie.model';
 import { Store } from '@ngrx/store';
-import { setToFavoriteList, setToWatchList } from '../../store/actions';
+import { setMovieToRoute, setToFavoriteList, setToWatchList } from '../../store/actions';
 import { selectFavoriteListMovies } from '../../store/selectors';
 @Component({
   selector: 'app-movie-card',
@@ -38,5 +38,7 @@ export class MovieCard {
     this.store.dispatch(setToWatchList({ movie }));
   }
 
-  routeToMovie(movie: Movie) {}
+  routeToMovie(movie: Movie) {
+    this.store.dispatch(setMovieToRoute({ movie: movie }));
+  }
 }

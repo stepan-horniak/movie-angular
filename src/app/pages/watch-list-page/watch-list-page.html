@@ -1,8 +1,8 @@
-@if (movieList.length) {
-@for (movieEl of movieList; track $index) {
+@if (watchListMovies$ | async; as data) {
+@for (movieEl of data; track $index) {
 <app-movie-card [movie]="movieEl">
   <button class="">
-    <mat-icon (click)="deleteMovie(movieEl)">clear</mat-icon>
+    <mat-icon (click)="deleteMovie(movieEl.id)">clear</mat-icon>
   </button>
 </app-movie-card>
 }

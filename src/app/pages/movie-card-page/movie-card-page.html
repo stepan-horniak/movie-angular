@@ -1,4 +1,4 @@
-@if (movie) {
+@if (movie$ | async; as movie) {
 <div class="movie-card">
   <div class="movie-card__top top-movie-card">
     <h2 class="top-movie-card__title">{{movie.title}}</h2>
