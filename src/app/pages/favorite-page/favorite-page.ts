@@ -22,7 +22,7 @@ export class FavoritePage implements OnInit {
   ngOnInit() {
     this.movieList$ = this.store.select(selectFavoriteListMovies);
   }
-  deleteMovie(movieId: Number) {
+  deleteMovie(movieId: number) {
     this.store.dispatch(deleteMovieInFavoriteList({ movieId: movieId }));
   }
 }

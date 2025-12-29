@@ -6,11 +6,9 @@ import { TransformLenghtPipe } from '../../pipes/transform-lenght-pipe';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { MovieData } from '../../services/movie.service';
 import { Movie } from '../../models/movie.model';
 import { Store } from '@ngrx/store';
 import { setMovieToRoute, setToFavoriteList, setToWatchList } from '../../store/actions';
-import { selectFavoriteListMovies } from '../../store/selectors';
 @Component({
   selector: 'app-movie-card',
   imports: [

@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie.model';
-import { forkJoin, map, Observable, Subscription } from 'rxjs';
-import { MovieData } from '../../services/movie.service';
+import { map, Observable } from 'rxjs';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { MovieCard } from '../../components/movie-card/movie-card';
 import { Store } from '@ngrx/store';
-
+import * as MoviesSelectors from '../../store/selectors';
+import { loadMovies } from '../../store/actions';
 @Component({
   selector: 'app-movie-list',
   imports: [AsyncPipe, CommonModule, MovieCard],
@@ -15,16 +15,17 @@ import { Store } from '@ngrx/store';
 })
 export class MovieList implements OnInit {
   movies$!: Observable<Movie[]>;
-
+  public go = false;
   constructor(private store: Store) {}
 
   ngOnInit() {
-    const apiText = ['now_playing', 'popular', 'top_rated', 'upcoming'];
+    this.store.dispatch(loadMovies({ category: 'now_playing' }));
 
-    // const requests = apiText.map((key) => this.movieData.getMoviesAPi(key));
-
-    // this.movies$ = forkJoin(requests).pipe(
-    //   map((resArr) => resArr.flatMap((r) => r.results)) // об’єднати всі results в один масив
-    // );
+    this.movies$ = this.store.select(MoviesSelectors.selectMovieListNowPlaying).pipe(
+      map((movies) => {
+        this.go = movies.length > 0;
+        return movies;
+      })
+    );
   }
 }

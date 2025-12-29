@@ -24,3 +24,10 @@ export const selectMovieToRoute = createSelector(
   selectMoviesState,
   (state) => state.movieElRouteToCard
 );
+export const selectMovieListNowPlaying = createSelector(
+  selectMoviesState,
+  (state) => state.nowPlaying
+);
+export const selectMovieListPopular = createSelector(selectMoviesState, (state) => state.popular);
+export const selectMovieListTopRated = createSelector(selectMoviesState, (state) => state.topRated);
+export const selectMovieListUpcoming = createSelector(selectMoviesState, (state) => state.upcoming);

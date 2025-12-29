@@ -22,3 +22,4 @@ export interface Movie {
   vote_average: number;
   vote_count: number;
 }
+export type MovieCategory = 'now_playing' | 'popular' | 'top_rated' | 'upcoming';

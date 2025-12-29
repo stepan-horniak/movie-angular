@@ -23,7 +23,7 @@ export class WatchListPage implements OnInit {
   ngOnInit() {
     this.watchListMovies$ = this.store.select(selectWatchListMovies);
   }
-  deleteMovie(movieId: Number) {
+  deleteMovie(movieId: number) {
     this.store.dispatch(deleteMovieInWatchList({ movieId: movieId }));
   }
 }

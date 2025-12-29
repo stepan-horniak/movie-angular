@@ -28,5 +28,9 @@ export const moviesReducer = createReducer(
   on(MoviesActions.setMovieToRoute, (state, { movie }) => ({
     ...state,
     movieElRouteToCard: movie,
+  })),
+  on(MoviesActions.loadMoviesSuccess, (state, { movies, category }) => ({
+    ...state,
+    [category]: movies,
   }))
 );
