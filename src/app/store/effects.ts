@@ -27,4 +27,24 @@ export class MoviesEffects {
       )
     )
   );
+
+  //   loadMovies$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(MoviesActions.loadMovies),
+  //     // Дивимось у Store
+  //     withLatestFrom(this.store.select(selectMoviesState)),
+  //     // Фільтруємо: пускаємо запит далі тільки якщо масив порожній
+  //     filter(([action, state]) => {
+  //       const stateKey = categoryToStateKey[action.category];
+  //       return state[stateKey].length === 0;
+  //     }),
+  //     // Якщо filter пропустив — робимо запит
+  //     switchMap(([action]) =>
+  //       this.movieService.getMovies(action.category).pipe(
+  //         map(movies => MoviesActions.loadMoviesSuccess({ movies, category: action.category })),
+  //         catchError(() => EMPTY)
+  //       )
+  //     )
+  //   )
+  // );
 }

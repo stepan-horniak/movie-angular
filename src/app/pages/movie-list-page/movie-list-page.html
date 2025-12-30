@@ -1,4 +1,4 @@
-@if (go) {
-@for (movieEl of movies$ | async ; track $index) {
+@if (movies$ | async; as movies) {
+@for (movieEl of movies ; track $index) {
 <app-movie-card [movie]="movieEl"></app-movie-card>
 }}

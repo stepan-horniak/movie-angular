@@ -4,17 +4,17 @@ export interface MoviesState {
   favoriteListMovies: Movie[];
   watchListMovies: Movie[];
   movieElRouteToCard: Movie | null;
-  nowPlaying: Movie[];
+  now_playing: Movie[];
   popular: Movie[];
-  topRated: Movie[];
+  top_rated: Movie[];
   upcoming: Movie[];
 }
 export const initialMoviesState: MoviesState = {
   favoriteListMovies: [],
   watchListMovies: [],
   movieElRouteToCard: null,
-  nowPlaying: [],
+  now_playing: [],
   popular: [],
-  topRated: [],
+  top_rated: [],
   upcoming: [],
 };

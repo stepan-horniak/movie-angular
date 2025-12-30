@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie.model';
-import { map, Observable } from 'rxjs';
+import { combineLatest, map, Observable, tap } from 'rxjs';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { MovieCard } from '../../components/movie-card/movie-card';
 import { Store } from '@ngrx/store';
@@ -15,17 +15,20 @@ import { loadMovies } from '../../store/actions';
 })
 export class MovieList implements OnInit {
   movies$!: Observable<Movie[]>;
-  public go = false;
   constructor(private store: Store) {}
 
   ngOnInit() {
     this.store.dispatch(loadMovies({ category: 'now_playing' }));
-
-    this.movies$ = this.store.select(MoviesSelectors.selectMovieListNowPlaying).pipe(
-      map((movies) => {
-        this.go = movies.length > 0;
-        return movies;
-      })
+    this.store.dispatch(loadMovies({ category: 'popular' }));
+    this.store.dispatch(loadMovies({ category: 'top_rated' }));
+    this.store.dispatch(loadMovies({ category: 'upcoming' }));
+    this.movies$ = combineLatest({
+      nowPlaying: this.store.select(MoviesSelectors.selectMoviesByCategory('now_playing')),
+      popular: this.store.select(MoviesSelectors.selectMoviesByCategory('popular')),
+      topRated: this.store.select(MoviesSelectors.selectMoviesByCategory('top_rated')),
+      upcoming: this.store.select(MoviesSelectors.selectMoviesByCategory('upcoming')),
+    }).pipe(
+      map((data) => [...data.nowPlaying, ...data.popular, ...data.topRated, ...data.upcoming])
     );
   }
 }

@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { MoviesState } from './state';
+import { categoryToStateKey, MovieCategory } from '../models/movie.model';
 
 export const selectMoviesState = createFeatureSelector<MoviesState>('movies');
 
@@ -24,10 +25,9 @@ export const selectMovieToRoute = createSelector(
   selectMoviesState,
   (state) => state.movieElRouteToCard
 );
-export const selectMovieListNowPlaying = createSelector(
-  selectMoviesState,
-  (state) => state.nowPlaying
-);
-export const selectMovieListPopular = createSelector(selectMoviesState, (state) => state.popular);
-export const selectMovieListTopRated = createSelector(selectMoviesState, (state) => state.topRated);
-export const selectMovieListUpcoming = createSelector(selectMoviesState, (state) => state.upcoming);
+
+export const selectMoviesByCategory = (category: MovieCategory) =>
+  createSelector(selectMoviesState, (state) => {
+    const stateKey = categoryToStateKey[category];
+    return state[stateKey];
+  });
