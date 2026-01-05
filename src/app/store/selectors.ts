@@ -28,6 +28,5 @@ export const selectMovieToRoute = createSelector(
 
 export const selectMoviesByCategory = (category: MovieCategory) =>
   createSelector(selectMoviesState, (state) => {
-    const stateKey = categoryToStateKey[category];
-    return state[stateKey];
+    return state[categoryToStateKey[category]];
   });

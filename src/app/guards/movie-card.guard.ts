@@ -6,6 +6,6 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angul
 })
 export class MovieGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return true;
+    return confirm(`Are you sure you want to navigate to this movie page?`);
   }
 }

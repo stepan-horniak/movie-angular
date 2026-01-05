@@ -1,5 +1,5 @@
 @if (movies$ | async; as data) {
-@for (movieEl of data.results; track $index) {
+@for (movieEl of data; track $index) {
 <app-movie-card [movie]="movieEl">
 </app-movie-card>
 }
